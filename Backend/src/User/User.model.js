@@ -5,7 +5,7 @@ const userSchema=new mongoose.Schema({
     last_name:{type:String},
     id:{type:Number,required:true},
     tasks:{type:Array,default:[]},
-    columns:{type:Array,default:[]},
+    columns:{type:Array,default:["Todo","In-Progress","Completed"]},
 })
 
 const User=mongoose.model("user",userSchema)

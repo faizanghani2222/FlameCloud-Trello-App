@@ -1,22 +1,22 @@
 import { Box, Heading, Spinner } from '@chakra-ui/react';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TelegramLogin from '../Components/TelegramLogin';
 import { AppContext } from '../Context/AppContext';
 
 
 function Login() {
-     const {setData}=useContext(AppContext)
+     const {data,setData}=useContext(AppContext)
      const navigate=useNavigate()
      const [loading,setLoading]=useState(false)
 
     const handleUser=(user)=>{    
         setLoading(true)
         axios.post("https://flamecloud-trello-backend.onrender.com/user/login",user).then((res)=>{
+            localStorage.setItem("flameCloudToken",res.data.id)
             setLoading(false)
             setData(res.data)
-            alert("Login Successfull")
             navigate("/dashboard")
         }).catch((err)=>{
             console.log(err)
@@ -25,6 +25,31 @@ function Login() {
         })
             
     }
+
+
+   const handlePageRefresh=(id)=>{
+    let obj={id:id}
+    setLoading(true)
+        axios.post("https://flamecloud-trello-backend.onrender.com/user/login",obj).then((res)=>{
+            setLoading(false)
+            setData(res.data)
+            navigate("/dashboard")
+        }).catch((err)=>{
+            console.log(err)
+            setLoading(false)
+            alert("Login Failed Try again")
+        })
+    }
+
+
+    useEffect(()=>{
+        if(!data.id){
+            let id=localStorage.getItem("flameCloudToken")
+            if(id){
+                handlePageRefresh(id)
+            }
+        }
+    },[])
 
     if(loading===true){
 
