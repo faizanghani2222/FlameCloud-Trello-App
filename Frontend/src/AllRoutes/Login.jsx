@@ -69,7 +69,7 @@ function Login() {
                 <Box width="100%" backgroundColor="#54A9EB" minHeight="100vh" display="flex" alignItems="center" justifyContent="center">
                     <Box width="40%" background="white" borderRadius={"1.5em"} display="flex" flexDirection="column"  alignItems="center" paddingTop="5vh" height="50vh" gap="10vh">
                     
-                        <Heading>FlameCloud Trello</Heading>
+                        <Heading fontWeight="500" textAlign="center">FlameCloud Trello Login</Heading>
                 
                         <TelegramLogin
                             botName="flamecloudTrelloBot"

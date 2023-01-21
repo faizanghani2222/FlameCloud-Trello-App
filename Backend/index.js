@@ -24,7 +24,7 @@ const telegramBot = new TelegramBot(token, { polling: true })
 
 telegramBot.onText(/\/start/, (msg) => {
      const id = msg.chat.id;
-  telegramBot.sendMessage(id, "Welcome User, we are happy to assist you :) the  bot command for updating Trello Board are:- \n For adding new task --> /addTask Column-Name Task-Title \n For changing task status --> /changeTaskStatus Column-Name Task-Title \n For deleting a task --> /deleteTask Task-Title \n For Adding a column --> /addColumn Column-Name \n For deleting a column --> /removeColumn Column-Name");
+  telegramBot.sendMessage(id, "Welcome User, we are happy to assist you :) the  bot command for updating Trello Board are:- \n \n For adding new task --> \n /addTask Column-Name Task-Title \n \n For changing task status --> \n /changeTaskStatus Column-Name Task-Title \n \n For deleting a task --> \n /deleteTask Task-Title \n \n For Adding a column --> \n /addColumn Column-Name \n \n For deleting a column --> \n /removeColumn Column-Name");
 });
 
 telegramBot.on('message', (msg) => {
@@ -37,7 +37,7 @@ telegramBot.on('message', (msg) => {
             if(res.message==="success"){
                 telegramBot.sendMessage(id, 'Column added successfully');
                }else{
-                telegramBot.sendMessage(id, 'Failed to add column try again command-> /addColumn Column-Name');
+                telegramBot.sendMessage(id, 'Failed to add column try again command-> \n /addColumn Column-Name');
                }
            })
 
@@ -47,7 +47,7 @@ telegramBot.on('message', (msg) => {
         if(res.message==="success"){
             telegramBot.sendMessage(id, 'Removed Column Successfully');
            }else{
-            telegramBot.sendMessage(id, 'Failed to remove column try again command-> /removeColumn Column-Name');
+            telegramBot.sendMessage(id, 'Failed to remove column try again command-> \n /removeColumn Column-Name');
            }
        })
 
@@ -57,7 +57,7 @@ telegramBot.on('message', (msg) => {
         if(res.message==="success"){
             telegramBot.sendMessage(id, 'Added Task Successfully');
            }else{
-            telegramBot.sendMessage(id, 'Failed to add task try again command-> /addTask Column-Name Task-Title');
+            telegramBot.sendMessage(id, 'Failed to add task try again command-> \n /addTask Column-Name Task-Title');
            }
        })
 
@@ -67,7 +67,7 @@ telegramBot.on('message', (msg) => {
             if(res.message==="success"){
                 telegramBot.sendMessage(id, 'Changed Task Status Successfully');
                }else{
-                telegramBot.sendMessage(id, 'Failed to add change task status try again command-> /changeTaskStatus Column-Name Task-Title');
+                telegramBot.sendMessage(id, 'Failed to add change task status try again command-> \n /changeTaskStatus Column-Name Task-Title');
                }
            })
 
@@ -77,12 +77,12 @@ telegramBot.on('message', (msg) => {
             if(res.message==="success"){
                 telegramBot.sendMessage(id, 'Task deleted successfully');
                }else{
-                telegramBot.sendMessage(id, 'Failed to delete task status try again command-> /deleteTask Task-Title');
+                telegramBot.sendMessage(id, 'Failed to delete task status try again command-> \n /deleteTask Task-Title');
                }
            })
 
     }else if(query[0]==="/help"){
-        telegramBot.sendMessage(id, "Welcome User, we are happy to assist you :) the  bot command for updating Trello Board are:- \n For adding new task --> /addTask Column-Name Task-Title \n For changing task status --> /changeTaskStatus Column-Name Task-Title \n For deleting a task --> /deleteTask Task-Title \n For Adding a column --> /addColumn Column-Name \n For deleting a column --> /removeColumn Column-Name");
+        telegramBot.sendMessage(id, "Welcome User, we are happy to assist you :) the  bot command for updating Trello Board are:- \n \n For adding new task --> \n /addTask Column-Name Task-Title \n \n For changing task status --> \n /changeTaskStatus Column-Name Task-Title \n \n For deleting a task --> \n /deleteTask Task-Title \n \n For Adding a column --> \n /addColumn Column-Name \n \n For deleting a column --> \n /removeColumn Column-Name");
     }
     
     else{
